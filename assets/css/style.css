@@ -24,5 +24,22 @@ hr {
 }
 .done-true {
 	text-decoration: line-through;
-	color: grey;
+	color: #bbb;
+}
+.hidden {
+	display: none;
+}
+.btn {
+	font-family: Quicksand;
+	color: #fff;
+	background-color: #000;
+	border-radius: 5px;
+	border: none;
+	padding: 8px;
+}
+ul {
+	padding: 0;
+}
+li {
+	list-style-type: none;
 }

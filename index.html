@@ -1,7 +1,7 @@
 <!doctype html>
 <html ng-app="todo">
   <head>
-    <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0;">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
     <link rel="stylesheet" href="assets/css/style.css">
     <script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.3/angular.min.js"></script>
@@ -18,7 +18,7 @@
       <div data-role="content">
         <div ng-controller="TodoCtrl">
           <span>{{remaining()}} of {{todos.length}} remaining</span>
-          <span>[ <a href="" ng-click="archive(todo)">archive completed</a> ]</span>
+          <button class="btn" ng-click="archive(todo)">archive completed</button>
           <ul class="unstyled">
             <li ng-repeat="todo in todos">
               <input type="checkbox" ng-model="todo.done">
@@ -29,11 +29,11 @@
             <textarea z-keypress="addTodo()" class="entry" ng-model="todoText"></textarea>
           </form>
           <hr>
-          <span>{{archivedtodos.length}} archived</span>
+          <span ng-class="{hidden: archivedtodos.length == 0}">{{archivedtodos.length}} archived</span>
           <ul>
             <li ng-repeat="todo in archivedtodos">
+              <button class="btn" ng-click="unarchive(todo)">unarchive</button>
               <span class="done-{{todo.done}}">{{todo.text}}</span>
-              [ <a href="" ng-click="unarchive(todo)">unarchive</a> ]
             </li>
           </ul>
         </div>
