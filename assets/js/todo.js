@@ -1,10 +1,13 @@
 function TodoCtrl($scope) {
   $scope.todos = [];
   $scope.archivedtodos = [];
+  $scope.counter = 1;
  
   $scope.addTodo = function() {
-    $scope.todos.push({text:$scope.todoText, done:false});
+    var nextId = $scope.counter;
+    $scope.todos.push({id:nextId, text:$scope.todoText, done:false});
     $scope.todoText = '';
+    $scope.counter++;
     return false;
   };
  
@@ -32,4 +35,8 @@ function TodoCtrl($scope) {
 		$scope.todos.push(todo);
 		$scope.archivedtodos.pop(todo);
 	};
+
+  $scope.deleteArchive = function(todo) {
+    $scope.archivedtodos.pop(todo);
+  };
 }

@@ -21,18 +21,19 @@
           <button class="btn" ng-click="archive(todo)">archive completed</button>
           <ul class="unstyled">
             <li ng-repeat="todo in todos">
-              <input type="checkbox" ng-model="todo.done">
-              <span class="done-{{todo.done}}">{{todo.text}}</span>
+              <input type="checkbox" id="{{todo.id}}" ng-model="todo.done">
+              <label for="{{todo.id}}" class="done-{{todo.done}}">{{todo.text}}</label>
             </li>
           </ul>
           <form ng-submit="addTodo()">
             <textarea z-keypress="addTodo()" class="entry" ng-model="todoText"></textarea>
           </form>
           <hr>
-          <span ng-class="{hidden: archivedtodos.length == 0}">{{archivedtodos.length}} archived</span>
+          <span ng-show="{{archivedtodos.length != 0}}">{{archivedtodos.length}} archived</span>
           <ul>
             <li ng-repeat="todo in archivedtodos">
               <button class="btn" ng-click="unarchive(todo)">unarchive</button>
+              <button class="btnred" ng-click="deleteArchive(todo)">delete</button>
               <span class="done-{{todo.done}}">{{todo.text}}</span>
             </li>
           </ul>
