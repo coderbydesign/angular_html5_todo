@@ -7,15 +7,16 @@ body {
 .header {
 	font-weight: 700;
 }
-textarea	{
+input[type='text']	{
 	border: none;
-	width: 100%;
+	border-left: 2px solid #ccc;
+	width: 90%;
 	font-family: Quicksand;
 	font-size: 14pt;
 	font-weight: 400;
 	resize: none;
 }
-textarea:focus {
+input[type='text']:focus {
 	outline: none;
 }
 hr {

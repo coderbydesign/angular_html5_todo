@@ -18,18 +18,22 @@
       <div data-role="content">
         <div ng-controller="TodoCtrl">
           <span>{{remaining()}} of {{todos.length}} remaining</span>
-          <button class="btn" ng-click="archive(todo)">archive completed</button>
+          <button class="btn" ng-show="remaining() != todos.length && todos.length != 0" ng-click="archive(todo)">archive completed</button>
+          <hr ng-show="todos.length != 0">
           <ul class="unstyled">
             <li ng-repeat="todo in todos">
               <input type="checkbox" id="{{todo.id}}" ng-model="todo.done">
               <label for="{{todo.id}}" class="done-{{todo.done}}">{{todo.text}}</label>
             </li>
           </ul>
-          <form ng-submit="addTodo()">
-            <textarea z-keypress="addTodo()" class="entry" ng-model="todoText"></textarea>
-          </form>
           <hr>
-          <span ng-show="{{archivedtodos.length != 0}}">{{archivedtodos.length}} archived</span>
+          <form ng-submit="addTodo()">
+            <input type="text" class="entry" ng-model="todoText" placeholder="entry">
+          </form>
+          <div ng-show="archivedtodos.length != 0">
+            <hr>
+            <span>{{archivedtodos.length}} archived</span>
+          </div>
           <ul>
             <li ng-repeat="todo in archivedtodos">
               <button class="btn" ng-click="unarchive(todo)">unarchive</button>
