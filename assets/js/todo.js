@@ -1,13 +1,13 @@
 function TodoCtrl($scope) {
-  $scope.todos = [];
+  localStorage['todos'] === undefined ? $scope.todos = [] : $scope.todos = JSON.parse(localStorage['todos']);
   $scope.archivedtodos = [];
-  $scope.counter = 1;
  
   $scope.addTodo = function() {
-    var nextId = $scope.counter;
-    $scope.todos.push({id:nextId, text:$scope.todoText, done:false});
+    localStorage['todoscounter'] === undefined ? nextId = 1 : nextId = localStorage['todoscounter']++;
+    var todo = {id:nextId, text:$scope.todoText, done:false};
+    $scope.todos.push(todo);
     $scope.todoText = '';
-    $scope.counter++;
+    $scope.setStorage();
     return false;
   };
  
@@ -29,7 +29,7 @@ function TodoCtrl($scope) {
 				$scope.archivedtodos.push(todo);
       }
     });
-  };
+  };  
 
   $scope.unarchive = function(todo) {
 		$scope.todos.push(todo);
@@ -38,5 +38,10 @@ function TodoCtrl($scope) {
 
   $scope.deleteArchive = function(todo) {
     $scope.archivedtodos.pop(todo);
+  };
+
+  $scope.setStorage = function() {
+    localStorage['todos'] = JSON.stringify($scope.todos);
+    localStorage['todoscounter'] === undefined ? localStorage['todoscounter'] = 2 : "";
   };
 }
