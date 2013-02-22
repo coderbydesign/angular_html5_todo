@@ -23,7 +23,7 @@
           <hr ng-show="todos.length != 0">
           <ul class="unstyled">
             <li ng-repeat="todo in todos">
-              <input type="checkbox" id="{{todo.id}}" ng-model="todo.done">
+              <input type="checkbox" id="{{todo.id}}" ng-model="todo.done" ng-click="done(todo)">
               <label for="{{todo.id}}" class="done-{{todo.done}}">{{todo.text}}</label>
             </li>
           </ul>

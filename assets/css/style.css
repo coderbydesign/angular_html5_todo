@@ -19,6 +19,9 @@ input[type='text']	{
 input[type='text']:focus {
 	outline: none;
 }
+input[type='checkbox'] {
+	vertical-align: middle;
+}
 hr {
 	background-color: #ccc;
 	border: #ccc;
