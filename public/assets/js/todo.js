@@ -55,13 +55,13 @@ function TodoCtrl($scope) {
 
   $scope.unarchive = function(todo) {
 		$scope.todos.push(todo);
+    $scope.archivedtodos.splice($scope.archivedtodos.indexOf(todo),1);
     localStorage['todos'] = JSON.stringify($scope.todos);
-		$scope.archivedtodos.pop(todo);
     localStorage['archivedtodos'] = JSON.stringify($scope.archivedtodos);
 	};
 
   $scope.deleteArchive = function(todo) {
-    $scope.archivedtodos.pop(todo);
+    $scope.archivedtodos.splice($scope.archivedtodos.indexOf(todo),1);
     localStorage['archivedtodos'] = JSON.stringify($scope.archivedtodos);
   };
 
