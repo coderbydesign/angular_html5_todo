@@ -1,2 +1,2 @@
-require 'app' 
+require 'angular' 
 run Sinatra::Application
