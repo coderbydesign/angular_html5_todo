@@ -1,5 +1,5 @@
 $(function(){
-	$('.entry').focus();
+	// $('.entry').focus();
 });
 
 var app = angular.module('todo', []);
